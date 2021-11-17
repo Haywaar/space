@@ -1,0 +1,32 @@
+# Intellij IDEA
+/atlassian-ide-plugin.xml
+/.idea/kotlinc.xml
+/.idea/workspace.xml
+/.idea/tasks.xml
+/.idea/uiDesigner.xml
+/.idea/copyright/
+/.idea/scopes/
+/.idea/.idea.*
+/**/.idea/gradle.xml
+/**/.idea/misc.xml
+/.idea/dictionaries/*
+
+# Android Studio
+/Assets/Game/.Platform/Android/HustleCastleAndroid/.idea/compiler.xml
+/Assets/Game/.Platform/Android/HustleCastleAndroid/.idea/jarRepositories.xml
+
+# Unity
+/Library/
+/Out/
+/Temp/
+/Logs/
+/UserSettings/
+/*.csproj
+
+
+/obj/Debug
+/.vscode
+/.vs
+/.vs/SH
+
+
