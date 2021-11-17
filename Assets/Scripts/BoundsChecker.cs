@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoundsChecker : MonoBehaviour
@@ -14,6 +11,8 @@ public class BoundsChecker : MonoBehaviour
     public float cameraWidth, cameraHeight;
 
     public bool isOnScreen = true;
+
+    [HideInInspector] public bool offRight, offLeft, offUp, offDown; // Пересечение границ экрана
     private void Awake()
     {
         cameraHeight = Camera.main.orthographicSize; // Вернуть число из поля size
@@ -28,27 +27,33 @@ public class BoundsChecker : MonoBehaviour
         {
             position.x = cameraWidth - radius;
             isOnScreen = false;
+            offRight = true;
         }
         if (position.x < -cameraWidth + radius)
         {
             position.x = -cameraWidth + radius;
             isOnScreen = false;
+            offLeft = true;
         }
         if (position.y > cameraHeight - radius)
         {
             position.y = cameraHeight - radius;
             isOnScreen = false;
+            offUp = true;
         }
         if (position.y < -cameraHeight + radius)
         {
             position.y = -cameraHeight + radius;
             isOnScreen = false;
+            offDown = true;
         }
 
+        isOnScreen = !(offUp || offDown || offLeft || offRight);
         if (keepOnScreen && !isOnScreen)
         {
             transform.position = position;
             isOnScreen = true;
+            offDown = offLeft = offRight = offUp = false;
         }
     }
 

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -37,13 +34,9 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Move();
-        if (boundsChecker != null && !boundsChecker.isOnScreen)
+        if (boundsChecker != null && boundsChecker.offDown)
         {
-            //не вышел за нижнюю границу
-            if (position.y < boundsChecker.cameraHeight - boundsChecker.radius)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject); // Теперь не дублируется функционал
         }
     }
 }
