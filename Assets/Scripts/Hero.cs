@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Hero : MonoBehaviour
@@ -69,6 +70,7 @@ public class Hero : MonoBehaviour
 
         if (go.tag == "Enemy")
         {
+            transform.DOShakePosition(0.5f, 10f, 50);
             hp = hp - 1;
             Destroy(go);
         }
