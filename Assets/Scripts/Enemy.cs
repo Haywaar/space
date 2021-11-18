@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     [Header("Set in inspector")] 
-    public float speed = 10f, fireRate = 0.4f, health = 10, score = 100;
+    public float speed = 60f, fireRate = 0.4f, health = 10, score = 100;
 
     private BoundsChecker boundsChecker;
 
@@ -37,6 +38,20 @@ public class Enemy : MonoBehaviour
         if (boundsChecker != null && boundsChecker.offDown)
         {
             Destroy(gameObject); // Теперь не дублируется функционал
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject other = collision.gameObject;
+        if (other.tag == "ProjectileHero")
+        {
+            Destroy(other);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("hit non enemy");
         }
     }
 }
