@@ -47,9 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  fireRate: 0.4
+  fireRate: 1
   health: 10
   score: 100
+  projectileSpeed: 30
+  projectilePrefab: {fileID: 3183346787436973316, guid: 983c4d7ed53b5cb4b9ed465633bed04a, type: 3}
 --- !u!114 &9136325581994786097
 MonoBehaviour:
   m_ObjectHideFlags: 0

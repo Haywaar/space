@@ -10,6 +10,7 @@ public class Main : MonoBehaviour
     public float enemySpawnPerSecond = 0.5f; // Интервалы возрождений
     public float enemyDefaultPadding = 1.5f; //  Отступы между врагами
 
+    public float currentScore = 0;
     private BoundsChecker boundsChecker;
 
     private void Awake()
@@ -54,4 +55,13 @@ public class Main : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void EnemyDestroyed(float score)
+    {
+        currentScore = currentScore + score;
+    }
+    
+    public void SaveResults()
+    {
+        PlayerPrefs.SetFloat("LastScore", currentScore );
+    }
 }

@@ -67,7 +67,7 @@ public class Hero : MonoBehaviour
         }
         lastTrigger = go; // Обновление перед след вызовом
 
-        if (go.tag == "Enemy")
+        if (go.tag == "Enemy" || go.tag == "ProjectileEnemy")
         {
             hp = hp - 1;
             Destroy(go);
@@ -80,7 +80,10 @@ public class Hero : MonoBehaviour
         if (hp == 0)
         {
             Destroy(gameObject);
+            Main.solo.SaveResults();
             Main.solo.DelayedRestart(gameRestartDelay);
         }
     }
+    
+    
 }
