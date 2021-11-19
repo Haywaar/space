@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -5,11 +6,13 @@ using Random = UnityEngine.Random;
 public class Main : MonoBehaviour
 {
     static public Main solo;
-
+    private static Dictionary<WeaponType, WeaponConcept> WEAP_DICT;
     public GameObject[] prefabEnemies; // Шаблоны с врагами
     public float enemySpawnPerSecond = 0.5f; // Интервалы возрождений
     public float enemyDefaultPadding = 1.5f; //  Отступы между врагами
 
+    public WeaponConcept[] weaponConcepts;
+     
     private BoundsChecker boundsChecker;
 
     private void Awake()
@@ -18,6 +21,14 @@ public class Main : MonoBehaviour
         boundsChecker = GetComponent<BoundsChecker>();
         // Вызываем спауненеми раз в 2 секунды
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
+
+        WEAP_DICT = new Dictionary<WeaponType, WeaponConcept>();
+        foreach (var def in weaponConcepts)
+        {
+            WEAP_DICT[def.type] = def;
+            //Итерации по элементам массива концептс и создает для них
+            // записи в этом словаре
+        }
     }
 
     public void SpawnEnemy()
